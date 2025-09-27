@@ -90,31 +90,438 @@ here you code
 
 
 
-<footer id="footer" class="footer dark-background">
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Professional Memberships</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f4f8 0%, #e1e8f0 100%);
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: linear-gradient(120deg, #1a2a3a, #2c5282);
+            color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+            background-size: cover;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+            position: relative;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #2c5282;
+            display: inline-block;
+        }
+        
+        .membership-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .membership-box {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: all 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            position: relative;
+            border-top: 4px solid #2c5282;
+        }
+        
+        .membership-box:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Color changing animation */
+        @keyframes colorChange {
+            0% { border-top-color: #2c5282; }
+            25% { border-top-color: #63b3ed; }
+            50% { border-top-color: #1a365d; }
+            75% { border-top-color: #4299e1; }
+            100% { border-top-color: #2c5282; }
+        }
+        
+        .membership-box:hover {
+            animation: colorChange 3s infinite;
+        }
+        
+        .membership-header {
+            padding: 20px 25px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #f8fafc;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .membership-header i {
+            font-size: 1.4rem;
+            color: #2c5282;
+        }
+        
+        .membership-body {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .membership-item {
+            margin-bottom: 18px;
+            padding-bottom: 18px;
+            border-bottom: 1px dashed #eaeaea;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .membership-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .membership-item::before {
+            content: "•";
+            color: #2c5282;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.5rem;
+        }
+        
+        .role {
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 1.05rem;
+        }
+        
+        .organization {
+            color: #2c5282;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+        
+        .location {
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-top: 3px;
+        }
+        
+        .year {
+            display: inline-block;
+            background: #edf2f7;
+            color: #2c3e50;
+            padding: 3px 10px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            font-weight: 600;
+        }
+        
+        .highlight-box {
+            background: #2c5282;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+        
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            background: #1a2a3a;
+            color: white;
+            padding: 30px 20px;
+            border-radius: 12px;
+            margin-top: 40px;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .stat-item {
+            padding: 0 15px;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #63b3ed;
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .membership-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+
     <div class="container">
-      <h3 class="sitename">Personal</h3>
-      <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
-      <div class="social-links d-flex justify-content-center">
-        <a href=""><i class="bi bi-twitter-x"></i></a>
-        <a href=""><i class="bi bi-facebook"></i></a>
-        <a href=""><i class="bi bi-instagram"></i></a>
-        <a href=""><i class="bi bi-skype"></i></a>
-        <a href=""><i class="bi bi-linkedin"></i></a>
-      </div>
-      <div class="container">
-        <div class="copyright">
-          <span>Copyright</span> <strong class="px-1 sitename">Personal</strong> <span>All Rights Reserved</span>
+        <header>
+            <h1>Professional Memberships</h1>
+            <p class="subtitle">Leadership roles and affiliations with prestigious engineering organizations</p>
+        </header>
+        
+        <h2 class="section-title">Leadership & Executive Roles</h2>
+        
+        <div class="membership-container">
+            <div class="membership-box">
+                <div class="membership-header">
+                    <i class="fas fa-award"></i>
+                    <span>Fellow Status</span>
+                </div>
+                <div class="membership-body">
+                    <div class="membership-item">
+                        <div class="role">Fellow</div>
+                        <div class="organization">The Institution of Engineers, Bangladesh (IEB)</div>
+                        <div class="highlight-box">Highest membership grade</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="membership-box">
+                <div class="membership-header">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Leadership Positions</span>
+                </div>
+                <div class="membership-body">
+                    <div class="membership-item">
+                        <div class="role">Chair</div>
+                        <div class="organization">IEEE Bangladesh Section</div>
+                        <div class="year">2021</div>
+                        <div class="highlight-box">Leading the national section</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="membership-box">
+                <div class="membership-header">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Senior Member</span>
+                </div>
+                <div class="membership-body">
+                    <div class="membership-item">
+                        <div class="role">Senior Member</div>
+                        <div class="organization">Institute of Electrical & Electronics Engineers (IEEE), USA</div>
+                        <div class="highlight-box">Recognized for professional expertise</div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you've purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-          Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        
+        <h2 class="section-title">Technical Society Memberships</h2>
+        
+        <div class="membership-container">
+            <div class="membership-box">
+                <div class="membership-header">
+                    <i class="fas fa-laptop-code"></i>
+                    <span>Computer Society</span>
+                </div>
+                <div class="membership-body">
+                    <div class="membership-item">
+                        <div class="role">Member</div>
+                        <div class="organization">IEEE Computer Society</div>
+                        <div class="location">World's leading computing membership organization</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="membership-box">
+                <div class="membership-header">
+                    <i class="fas fa-robot"></i>
+                    <span>Robotics & Automation</span>
+                </div>
+                <div class="membership-body">
+                    <div class="membership-item">
+                        <div class="role">Member</div>
+                        <div class="organization">IEEE Robotics & Automation Society</div>
+                        <div class="location">Dedicated to robotics and automation technology</div>
+                    </div>
+                    <div class="membership-item">
+                        <div class="role">Member</div>
+                        <div class="organization">Robotics Society of Japan (RSJ)</div>
+                        <div class="location">Promoting robotics research and development</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="membership-box">
+                <div class="membership-header">
+                    <i class="fas fa-wave-square"></i>
+                    <span>Signal Processing</span>
+                </div>
+                <div class="membership-body">
+                    <div class="membership-item">
+                        <div class="role">Member</div>
+                        <div class="organization">IEEE Signal Processing Society</div>
+                        <div class="location">Advancing signal processing theory and applications</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="membership-box">
+                <div class="membership-header">
+                    <i class="fas fa-venus"></i>
+                    <span>Women in Engineering</span>
+                </div>
+                <div class="membership-body">
+                    <div class="membership-item">
+                        <div class="role">Member</div>
+                        <div class="organization">IEEE Women in Engineering Society</div>
+                        <div class="location">Promoting women engineers and scientists</div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-number">8</div>
+                <div class="stat-label">Professional Memberships</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2</div>
+                <div class="stat-label">Leadership Positions</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">1</div>
+                <div class="stat-label">Fellow Status</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">5</div>
+                <div class="stat-label">Technical Societies</div>
+            </div>
+        </div>
+        
+        
     </div>
-  </footer>
+
+
+
+
+
+<footer id="footer" class="footer dark-background">
+  <div class="container text-center">
+    <h3 class="sitename">Prof. Dr. Mohammed Moshiul Hoque</h3>
+    <p>Professor, Department of Computer Science & Engineering<br>
+       IEEE Student Branch Chair, CUET</p>
+    
+       
+    <div class="social-links d-flex justify-content-center">
+      <div class="social-links d-flex justify-content-center"></div>    
+
+
+          <!-- <a href="mmoshiulh@yahoo.com"><i class="bi bi-envelope-fill"></i></a> -->
+           <a href="mailto:mmoshiulh@gmail.com"><i class="bi bi-envelope-fill"></i></a>
+
+          <a href="https://www.facebook.com/mohammed.m.hoque.92/"><i class="bi bi-facebook"></i></a>
+          <a href="https://ieee.org"><i class="bi bi-globe"></i></a>
+          <a href="https://www.linkedin.com/in/sir-profile"><i class="bi bi-linkedin"></i></a>
+        </div>
+<!--       </div>
+      <a href="mailto:mmoshiulh@gmail.com" title="Email"><i class="bi bi-envelope"></i></a>
+      <a href="https://www.linkedin.com/in/sir-profile" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+      <a href="https://ieee.org" title="IEEE Profile"><i class="bi bi-globe"></i></a>
+    </div>  -->
+
+    <div class="copyright mt-3">
+      <span>© 2025</span> <strong class="px-1">Prof. Dr. Mohammed Moshiul Hoque</strong> <span>Knowledge • Research • Excellence</span>
+    </div>
+
+    <div class="credits">
+      Designed & Developed by <a href="#">[CodeHex]</a>
+    </div>
+  </div>
+</footer>
 
   <!-- Scroll Top -->
   <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
