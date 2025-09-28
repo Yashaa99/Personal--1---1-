@@ -96,8 +96,6 @@ here you code
 -->
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -136,6 +134,8 @@ here you code
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
+            border-left: 6px solid #4299e1;
+            border-right: 6px solid #4299e1;
         }
         
         header::before {
@@ -189,6 +189,7 @@ here you code
             color: white;
             transform: translateY(-3px);
             box-shadow: 0 5px 15px rgba(44, 82, 130, 0.4);
+            border: 2px solid #4299e1;
         }
         
         .tab:hover:not(.active) {
@@ -236,8 +237,8 @@ here you code
             margin-bottom: 40px;
         }
         
+        /* Card with two shaded colors and border highlights */
         .conference-card {
-            background: white;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             overflow: hidden;
@@ -247,11 +248,27 @@ here you code
             cursor: pointer;
             position: relative;
             z-index: 1;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-top: 4px solid #4299e1;
+            border-bottom: 4px solid #4299e1;
+        }
+        
+        /* Alternate card with different border colors */
+        .conference-card-alt {
+            border-top: 4px solid #48bb78;
+            border-bottom: 4px solid #48bb78;
         }
         
         .conference-card:hover {
             transform: translateY(-7px);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+            border-top: 4px solid #3182ce;
+            border-bottom: 4px solid #3182ce;
+        }
+        
+        .conference-card-alt:hover {
+            border-top: 4px solid #38a169;
+            border-bottom: 4px solid #38a169;
         }
         
         /* Animation for clicked cards */
@@ -259,10 +276,17 @@ here you code
             transform: scale(1.05) translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
             z-index: 10;
+            border-top: 4px solid #2b6cb0;
+            border-bottom: 4px solid #2b6cb0;
         }
         
+        .conference-card-alt.active {
+            border-top: 4px solid #2f855a;
+            border-bottom: 4px solid #2f855a;
+        }
+        
+        /* Card header with gradient background */
         .card-header {
-            background: #2c5282;
             color: white;
             padding: 18px 25px;
             font-weight: 600;
@@ -270,6 +294,14 @@ here you code
             display: flex;
             align-items: center;
             gap: 12px;
+            background: linear-gradient(120deg, #2c5282, #4299e1);
+            border-left: 4px solid #63b3ed;
+        }
+        
+        /* Alternate card header color */
+        .card-header-alt {
+            background: linear-gradient(120deg, #2d3748, #4a5568);
+            border-left: 4px solid #87a191;
         }
         
         .card-header i {
@@ -280,6 +312,14 @@ here you code
             padding: 25px;
             display: flex;
             flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f7fafc);
+            border-right: 2px solid #e2e8f0;
+        }
+        
+        /* Alternate card body color */
+        .card-body-alt {
+            background: linear-gradient(to bottom, #f8fafc, #edf2f7);
+            border-right: 2px solid #cbd5e0;
         }
         
         .activity-item {
@@ -333,6 +373,7 @@ here you code
             font-size: 0.85rem;
             margin-top: 5px;
             font-weight: 600;
+            border: 1px solid #cbd5e0;
         }
         
         /* Enhanced Timeline with Dark Text */
@@ -373,7 +414,9 @@ here you code
             background-color: white;
             border-radius: 10px;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
-            color: #2d3748; /* Dark text color */
+            color: #2d3748;
+            border-left: 4px solid #4299e1;
+            border-right: 2px solid #e2e8f0;
         }
         
         .timeline-content h3 {
@@ -384,7 +427,7 @@ here you code
         
         .timeline-content p {
             margin-bottom: 8px;
-            color: #4a5568; /* Dark gray for better readability */
+            color: #4a5568;
         }
         
         .timeline-item::after {
@@ -412,7 +455,6 @@ here you code
         }
         
         .editorial-card {
-            background: white;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             width: 100%;
@@ -420,30 +462,40 @@ here you code
             overflow: hidden;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            border-top: 4px solid #4299e1;
+            border-bottom: 4px solid #4299e1;
         }
         
         .editorial-card:hover {
             transform: translateY(-7px);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+            border-top: 4px solid #3182ce;
+            border-bottom: 4px solid #3182ce;
         }
         
         .editorial-card.active {
             transform: scale(1.05) translateY(-10px);
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
             z-index: 10;
+            border-top: 4px solid #2b6cb0;
+            border-bottom: 4px solid #2b6cb0;
         }
         
         .editorial-header {
-            background: #2c5282;
             color: white;
             padding: 20px;
             text-align: center;
             font-size: 1.4rem;
             font-weight: 600;
+            background: linear-gradient(120deg, #2c5282, #4299e1);
+            border-left: 4px solid #63b3ed;
         }
         
         .editorial-body {
             padding: 30px;
+            background: linear-gradient(to bottom, #ffffff, #f7fafc);
+            border-right: 2px solid #e2e8f0;
         }
         
         .editorial-item {
@@ -461,13 +513,15 @@ here you code
         .stats {
             display: flex;
             justify-content: space-around;
-            background: #1a2a3a;
+            background: linear-gradient(135deg, #1a2a3a, #2d3748);
             color: white;
             padding: 30px 20px;
             border-radius: 12px;
             margin-top: 40px;
             text-align: center;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-top: 4px solid #4299e1;
+            border-bottom: 4px solid #4299e1;
         }
         
         .stat-item {
@@ -492,6 +546,7 @@ here you code
             padding: 20px;
             color: #7f8c8d;
             font-size: 0.9rem;
+            border-top: 2px solid #e2e8f0;
         }
         
         @media (max-width: 768px) {
@@ -560,7 +615,7 @@ here you code
             <p style="margin-bottom: 25px; font-size: 1.1rem;">This portfolio showcases extensive contributions to academic conferences, technical program committees, and editorial boards spanning over a decade of professional service.</p>
             
             <div class="cards-container">
-                <div class="card conference-card">
+                <div class="conference-card">
                     <div class="card-header">
                         <i class="fas fa-gavel"></i>
                         <span>Leadership Roles</span>
@@ -582,12 +637,12 @@ here you code
                     </div>
                 </div>
                 
-                <div class="card conference-card">
-                    <div class="card-header">
+                <div class="conference-card conference-card-alt">
+                    <div class="card-header card-header-alt">
                         <i class="fas fa-users"></i>
                         <span>Committee Memberships</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body card-body-alt">
                         <div class="activity-item">
                             <div class="role">TPC Member</div>
                             <div class="conference">IC4ME2 2018</div>
@@ -606,7 +661,7 @@ here you code
                     </div>
                 </div>
                 
-                <div class="card conference-card">
+                <div class="conference-card">
                     <div class="card-header">
                         <i class="fas fa-edit"></i>
                         <span>Editorial Positions</span>
@@ -690,12 +745,12 @@ here you code
                     </div>
                 </div>
                 
-                <div class="conference-card">
-                    <div class="card-header">
+                <div class="conference-card conference-card-alt">
+                    <div class="card-header card-header-alt">
                         <i class="fas fa-users"></i>
                         <span>TPC Member Roles</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body card-body-alt">
                         <div class="activity-item">
                             <div class="role">TPC Member</div>
                             <div class="conference">IC4ME2 2018</div>
@@ -764,12 +819,12 @@ here you code
             <h2 class="section-title" style="margin-top: 40px;">Session Chair & Reviewer Roles</h2>
             
             <div class="conference-cards-container">
-                <div class="conference-card">
-                    <div class="card-header">
+                <div class="conference-card conference-card-alt">
+                    <div class="card-header card-header-alt">
                         <i class="fas fa-microphone"></i>
                         <span>Session Chair Roles</span>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body card-body-alt">
                         <div class="activity-item">
                             <div class="role">Session Chair</div>
                             <div class="conference">16th International Conference on Computer and Information Technology (ICCIT)</div>

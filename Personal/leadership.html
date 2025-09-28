@@ -89,7 +89,6 @@ here you code
 -->
 
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -128,6 +127,8 @@ here you code
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
             position: relative;
             overflow: hidden;
+            border-left: 6px solid #4299e1;
+            border-right: 6px solid #4299e1;
         }
         
         header::before {
@@ -173,8 +174,8 @@ here you code
             margin-bottom: 40px;
         }
         
+        /* Membership boxes with two shaded colors and border highlights */
         .membership-box {
-            background: white;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             overflow: hidden;
@@ -183,25 +184,53 @@ here you code
             flex-direction: column;
             height: 100%;
             position: relative;
-            border-top: 4px solid #2c5282;
+            border-top: 4px solid #4299e1;
+            border-bottom: 4px solid #4299e1;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+        }
+        
+        /* Alternate membership box with different colors */
+        .membership-box-alt {
+            border-top: 4px solid #48bb78;
+            border-bottom: 4px solid #48bb78;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
         }
         
         .membership-box:hover {
             transform: translateY(-7px);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+            border-top: 4px solid #3182ce;
+            border-bottom: 4px solid #3182ce;
+        }
+        
+        .membership-box-alt:hover {
+            border-top: 4px solid #38a169;
+            border-bottom: 4px solid #38a169;
         }
         
         /* Color changing animation */
         @keyframes colorChange {
-            0% { border-top-color: #2c5282; }
+            0% { border-top-color: #4299e1; }
             25% { border-top-color: #63b3ed; }
             50% { border-top-color: #1a365d; }
-            75% { border-top-color: #4299e1; }
-            100% { border-top-color: #2c5282; }
+            75% { border-top-color: #2c5282; }
+            100% { border-top-color: #4299e1; }
+        }
+        
+        @keyframes colorChangeAlt {
+            0% { border-top-color: #48bb78; }
+            25% { border-top-color: #68d391; }
+            50% { border-top-color: #2f855a; }
+            75% { border-top-color: #276749; }
+            100% { border-top-color: #48bb78; }
         }
         
         .membership-box:hover {
             animation: colorChange 3s infinite;
+        }
+        
+        .membership-box-alt:hover {
+            animation: colorChangeAlt 3s infinite;
         }
         
         .membership-header {
@@ -211,13 +240,21 @@ here you code
             display: flex;
             align-items: center;
             gap: 12px;
-            background: #f8fafc;
+            background: linear-gradient(120deg, #2c5282, #4299e1);
+            color: white;
             border-bottom: 1px solid #e2e8f0;
+            border-left: 4px solid #63b3ed;
+        }
+        
+        /* Alternate header with different colors */
+        .membership-header-alt {
+            background: linear-gradient(120deg, #2d3748, #4a5568);
+            border-left: 4px solid #68d391;
         }
         
         .membership-header i {
             font-size: 1.4rem;
-            color: #2c5282;
+            color: white;
         }
         
         .membership-body {
@@ -225,6 +262,14 @@ here you code
             flex-grow: 1;
             display: flex;
             flex-direction: column;
+            background: linear-gradient(to bottom, #ffffff, #f7fafc);
+            border-right: 2px solid #e2e8f0;
+        }
+        
+        /* Alternate body with different colors */
+        .membership-body-alt {
+            background: linear-gradient(to bottom, #f8fafc, #edf2f7);
+            border-right: 2px solid #cbd5e0;
         }
         
         .membership-item {
@@ -278,28 +323,38 @@ here you code
             font-size: 0.85rem;
             margin-top: 5px;
             font-weight: 600;
+            border: 1px solid #cbd5e0;
         }
         
         .highlight-box {
-            background: #2c5282;
+            background: linear-gradient(120deg, #2c5282, #4299e1);
             color: white;
             padding: 15px;
             border-radius: 8px;
             margin-top: 10px;
             text-align: center;
             font-weight: 600;
+            border-left: 4px solid #63b3ed;
+        }
+        
+        /* Alternate highlight box */
+        .highlight-box-alt {
+            background: linear-gradient(120deg, #2d3748, #4a5568);
+            border-left: 4px solid #68d391;
         }
         
         .stats {
             display: flex;
             justify-content: space-around;
-            background: #1a2a3a;
+            background: linear-gradient(135deg, #1a2a3a, #2d3748);
             color: white;
             padding: 30px 20px;
             border-radius: 12px;
             margin-top: 40px;
             text-align: center;
             box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-top: 4px solid #4299e1;
+            border-bottom: 4px solid #4299e1;
         }
         
         .stat-item {
@@ -324,6 +379,7 @@ here you code
             padding: 20px;
             color: #7f8c8d;
             font-size: 0.9rem;
+            border-top: 2px solid #e2e8f0;
         }
         
         @media (max-width: 768px) {
@@ -370,17 +426,17 @@ here you code
                 </div>
             </div>
             
-            <div class="membership-box">
-                <div class="membership-header">
+            <div class="membership-box membership-box-alt">
+                <div class="membership-header membership-header-alt">
                     <i class="fas fa-user-tie"></i>
                     <span>Leadership Positions</span>
                 </div>
-                <div class="membership-body">
+                <div class="membership-body membership-body-alt">
                     <div class="membership-item">
                         <div class="role">Chair</div>
                         <div class="organization">IEEE Bangladesh Section</div>
                         <div class="year">2021</div>
-                        <div class="highlight-box">Leading the national section</div>
+                        <div class="highlight-box highlight-box-alt">Leading the national section</div>
                     </div>
                 </div>
             </div>
@@ -403,12 +459,12 @@ here you code
         <h2 class="section-title">Technical Society Memberships</h2>
         
         <div class="membership-container">
-            <div class="membership-box">
-                <div class="membership-header">
+            <div class="membership-box membership-box-alt">
+                <div class="membership-header membership-header-alt">
                     <i class="fas fa-laptop-code"></i>
                     <span>Computer Society</span>
                 </div>
-                <div class="membership-body">
+                <div class="membership-body membership-body-alt">
                     <div class="membership-item">
                         <div class="role">Member</div>
                         <div class="organization">IEEE Computer Society</div>
@@ -436,12 +492,12 @@ here you code
                 </div>
             </div>
             
-            <div class="membership-box">
-                <div class="membership-header">
+            <div class="membership-box membership-box-alt">
+                <div class="membership-header membership-header-alt">
                     <i class="fas fa-wave-square"></i>
                     <span>Signal Processing</span>
                 </div>
-                <div class="membership-body">
+                <div class="membership-body membership-body-alt">
                     <div class="membership-item">
                         <div class="role">Member</div>
                         <div class="organization">IEEE Signal Processing Society</div>
@@ -465,10 +521,10 @@ here you code
             </div>
         </div>
         
-        
+       
         </div>
         
-        
+      
     </div>
 </body>
 </html>
