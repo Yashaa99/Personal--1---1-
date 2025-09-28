@@ -219,6 +219,7 @@ here you code
             display: inline-block;
         }
         
+        /* Original cards container for other sections */
         .cards-container {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
@@ -226,20 +227,38 @@ here you code
             margin-bottom: 40px;
         }
         
-        .card {
+        /* New layout for conference section */
+        .conference-cards-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .conference-card {
             background: white;
             border-radius: 12px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
+            width: 100%;
+            max-width: 900px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
         }
         
-        .card:hover {
+        .conference-card:hover {
             transform: translateY(-7px);
             box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        /* Animation for clicked cards */
+        .conference-card.active {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            z-index: 10;
         }
         
         .card-header {
@@ -259,7 +278,6 @@ here you code
         
         .card-body {
             padding: 25px;
-            flex-grow: 1;
             display: flex;
             flex-direction: column;
         }
@@ -400,6 +418,19 @@ here you code
             width: 100%;
             max-width: 800px;
             overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .editorial-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .editorial-card.active {
+            transform: scale(1.05) translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+            z-index: 10;
         }
         
         .editorial-header {
@@ -468,6 +499,10 @@ here you code
                 grid-template-columns: 1fr;
             }
             
+            .conference-card {
+                max-width: 100%;
+            }
+            
             h1 {
                 font-size: 2.2rem;
             }
@@ -525,7 +560,7 @@ here you code
             <p style="margin-bottom: 25px; font-size: 1.1rem;">This portfolio showcases extensive contributions to academic conferences, technical program committees, and editorial boards spanning over a decade of professional service.</p>
             
             <div class="cards-container">
-                <div class="card">
+                <div class="card conference-card">
                     <div class="card-header">
                         <i class="fas fa-gavel"></i>
                         <span>Leadership Roles</span>
@@ -547,7 +582,7 @@ here you code
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card conference-card">
                     <div class="card-header">
                         <i class="fas fa-users"></i>
                         <span>Committee Memberships</span>
@@ -571,7 +606,7 @@ here you code
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="card conference-card">
                     <div class="card-header">
                         <i class="fas fa-edit"></i>
                         <span>Editorial Positions</span>
@@ -617,8 +652,8 @@ here you code
         <section id="conferences" class="content-section">
             <h2 class="section-title">Conference Roles & Activities</h2>
             
-            <div class="cards-container">
-                <div class="card">
+            <div class="conference-cards-container">
+                <div class="conference-card">
                     <div class="card-header">
                         <i class="fas fa-gavel"></i>
                         <span>Chair & Co-chair Roles</span>
@@ -655,7 +690,7 @@ here you code
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="conference-card">
                     <div class="card-header">
                         <i class="fas fa-users"></i>
                         <span>TPC Member Roles</span>
@@ -689,7 +724,7 @@ here you code
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="conference-card">
                     <div class="card-header">
                         <i class="fas fa-tasks"></i>
                         <span>Advisory & Organizing Roles</span>
@@ -728,8 +763,8 @@ here you code
             
             <h2 class="section-title" style="margin-top: 40px;">Session Chair & Reviewer Roles</h2>
             
-            <div class="cards-container">
-                <div class="card">
+            <div class="conference-cards-container">
+                <div class="conference-card">
                     <div class="card-header">
                         <i class="fas fa-microphone"></i>
                         <span>Session Chair Roles</span>
@@ -775,7 +810,7 @@ here you code
                     </div>
                 </div>
                 
-                <div class="card">
+                <div class="conference-card">
                     <div class="card-header">
                         <i class="fas fa-check-double"></i>
                         <span>Reviewer Roles</span>
@@ -908,7 +943,6 @@ here you code
             </div>
         </section>
         
-       
     </div>
 
     <script>
@@ -929,6 +963,24 @@ here you code
                     // Show corresponding section
                     const tabId = this.getAttribute('data-tab');
                     document.getElementById(tabId).classList.add('active');
+                });
+            });
+            
+            // Card click animation
+            const cards = document.querySelectorAll('.conference-card, .editorial-card');
+            
+            cards.forEach(card => {
+                card.addEventListener('click', function() {
+                    // Remove active class from all cards
+                    cards.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked card
+                    this.classList.add('active');
+                    
+                    // Auto remove active class after 2 seconds
+                    setTimeout(() => {
+                        this.classList.remove('active');
+                    }, 2000);
                 });
             });
         });
