@@ -21,7 +21,7 @@
 :root { 
   --background-color: 
 #D0DBDA               ; /* Background color for the entire website, including individual sections */
-  --default-color: #fafafa; /* Default color used for the majority of the text content across the entire website */
+  --default-color: #141517; /* Default color used for the majority of the text content across the entire website */
   --heading-color: #91b3cf; /* Color for headings, subheadings and title throughout the website */
   --accent-color: #91b3cf; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --surface-color: #FFFFFF; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
@@ -48,7 +48,7 @@
 .dark-background {
   --background-color: rgba(1, 32, 43, 0.436);
   --default-color: #ffffff;
-  --heading-color: #e7eef1;
+  --heading-color: #3db3e6;
   --surface-color: #292929f9;
   --contrast-color: #000000;
 }
@@ -761,10 +761,13 @@ section,
 /*--------------------------------------------------------------
 # About Section
 --------------------------------------------------------------*/
+
 .about .content h2 {
   font-weight: 700;
   font-size: 24px;
 }
+
+
 
 .about .content ul {
   list-style: none;
@@ -787,6 +790,9 @@ section,
   color: var(--accent-color);
   line-height: 0;
 }
+
+
+
 
 /*--------------------------------------------------------------
 # Stats Section
